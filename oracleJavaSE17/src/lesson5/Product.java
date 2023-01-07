@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class Product {
-    private String id;
-    private String name;
-    private BigDecimal price;
+    private final String id;
+    private final String name;
+    private final BigDecimal price;
 
     private Rating rating;
 
@@ -27,9 +27,6 @@ public class Product {
 
     public Product(String id, String name, BigDecimal price) {
         this(id,name,price,Rating.NOT_RATED);
-        this.id = id;
-        this.name = name;
-        this.price = price;
     }
 
     public static final BigDecimal DISCOUNT_RATE = new BigDecimal(0.1);
@@ -37,24 +34,12 @@ public class Product {
         return id;
     }
 
-    public void setId(final String id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(final String name) {
-        this.name = name;
-    }
-
     public BigDecimal getPrice() {
         return price;
-    }
-
-    public void setPrice(final BigDecimal price) {
-        this.price = price;
     }
 
     public BigDecimal calculateDiscount(){
@@ -63,5 +48,9 @@ public class Product {
 
     public void printDetails(){
         System.out.println("Id: "+id+"\tName: "+name+"\tPrice: "+price+"\tRating: "+rating.getStars());
+    }
+
+    public Product applyRating(Rating newRating){
+        return new Product(id,name,price,newRating);
     }
 }

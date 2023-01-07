@@ -13,5 +13,8 @@ public class Shop {
         p3.printDetails();
         Product p4 = new Product();
         p4.printDetails();
+        Product p5 = p3.applyRating(Rating.THREE_STAR);
+        p5.printDetails();
+
     }
 }
